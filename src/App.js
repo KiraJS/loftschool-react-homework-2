@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
 import NewsPost from './NewsPost';
+import './App.css';
 
 class App extends Component {
   state = {
     newsInput: '',
-    // список постов
-    news: [
-      {
-        id: 1,
-        text: 'First post!',
-      },
-      {
-        id: 2,
-        text: 'Second post...',
-      },
-    ],
+    news: [], // список постов
   };
 
-  getNewsId = () => {
+  uniqueId = () => {
     return Math.random()
       .toString()
       .slice(2, 8);
@@ -29,11 +20,12 @@ class App extends Component {
   };
 
   handleKeyDown = e => {
-    if (e.keyCode === 13) {
+    const keyCodeEnter = 13;
+    if (e.keyCode === keyCodeEnter) {
       const { news } = this.state;
       const text = this.state.newsInput;
       this.setState({ newsInput: '' });
-      this.setState({ news: [...news, { id: this.getNewsId(), text }] });
+      this.setState({ news: [{ text }, ...news] });
     }
   };
 
@@ -43,11 +35,13 @@ class App extends Component {
       <div className="App">
         <input
           type="text"
+          className="post-input"
           value={newsInput}
+          placeholder="Typed new post and press Enter"
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown}
         />
-        {news.map(post => <NewsPost key={post.id} text={post.text} />)}
+        {news.map(post => <NewsPost key={this.uniqueId()} text={post.text} />)}
       </div>
     );
   }
