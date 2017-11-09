@@ -2,7 +2,13 @@ import React, {Component} from 'react';
 
 class NewsPost extends Component {
   render() {
-    return <div />;
+    const { text } = this.props;
+    return (
+      <div>
+        <p>{text}</p>
+        <input type="text"/>
+      </div>
+    );
   }
 }
 
