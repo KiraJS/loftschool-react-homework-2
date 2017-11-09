@@ -17,20 +17,33 @@ class App extends Component {
     ],
   };
 
-  handleChange(e) {
-    console.log('input value', e.target.value);
-  }
+  getNewsId = () => {
+    return Math.random()
+      .toString()
+      .slice(2, 8);
+  };
 
-  handleKeyDown(e) {
-    console.log('keyCode', e.keyCode);
-  }
+  handleChange = e => {
+    const value = e.target.value;
+    this.setState({ newsInput: value });
+  };
+
+  handleKeyDown = e => {
+    if (e.keyCode === 13) {
+      const { news } = this.state;
+      const text = this.state.newsInput;
+      this.setState({ newsInput: '' });
+      this.setState({ news: [...news, { id: this.getNewsId(), text }] });
+    }
+  };
 
   render() {
-    const { news } = this.state;
+    const { news, newsInput } = this.state;
     return (
       <div className="App">
         <input
           type="text"
+          value={newsInput}
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown}
         />
