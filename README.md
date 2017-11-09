@@ -1,5 +1,7 @@
 # Homework 2
 
+Домашнее задание №2 онлайн курсов по ReactJS от LoftSchool.
+
 Задачи:
 
 1. Написать компонент App, который содержит input, div.App, а так же список компонент NewsPost.
@@ -14,3 +16,12 @@
 10. Компонент Comment должен содержать p с текстом переданным из компоненты NewsPost
 10. Компонент Comment должен содержать span.delete, при клике на который должен вызываться метод onDelete который передают из props. onDelete должен получать id коментария.
 11. Все тесты должны работать
+
+Инструкции как запустить проект:
+
+1. git clone https://github.com/mrOrlando/loftschool-react-homework-2
+2. cd loftschool-react-homework-2
+3. yarn install
+4. yarn run start
+
+Запуск тестов: yarn run test
